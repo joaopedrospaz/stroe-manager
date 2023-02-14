@@ -20,9 +20,9 @@ const getProductById = async (req, res) => {
 const postProduct = async (req, res) => {
   const { name } = req.body;
 
-  const { message } = await productsService.createProduct(name);
+  const { type, message } = await productsService.createProduct(name);
 
-  // if (type) return res.status(statusErros.erro[type]).json({ message });
+  if (type) return res.status(statusErros.erro[type]).json({ message });
 
    return res.status(201).json(message);
 };
