@@ -13,7 +13,7 @@ describe('Testa a unidade de controller de products', function () {
  
 
   it('Listando todos os produtos, deve retornar status 200', async function () {
-    const req = {};
+    const req = { params: { id: 1 } };
     const res = {};
 
     res.status = sinon.stub().returns(res);
@@ -25,6 +25,15 @@ describe('Testa a unidade de controller de products', function () {
 
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(allProducts);
+  });
+
+  it('Buscando produtos pelo id com id vláido, deve retornar status 201', async function () {
+    const req = {};
+    const res = {};
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon.stub(productsService, 'getProductById').resolves({ type: null, message: allProducts[0]})
   });
 
 });

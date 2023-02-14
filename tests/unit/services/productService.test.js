@@ -16,10 +16,12 @@ describe('Testa a unidade de service de products', () => {
     expect(result.message).to.be.deep.equal(allProducts);
   });
 
-  // it('Buscando produtos pelo id', async () => {
-  //   sinon.stub(connection, 'execute').resolves([[allProducts[0]]]);
-  //   const result = await productModel.getById(1)
-  //   expect(result).to.be.deep.equal(allProducts[0])
-  // });
+  it('Buscando produtos pelo id', async () => {
+    sinon.stub(productModel, 'getById').resolves(allProducts[0]);
+    const result = await productsService.getProductById(1)
+
+    expect(result.type).to.be.deep.equal(null)
+    expect(result.message).to.be.deep.equal(allProducts[0])
+  });
   
 });
