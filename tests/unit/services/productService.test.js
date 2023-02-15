@@ -42,6 +42,14 @@ describe('Testa a unidade de service de products', async () => {
     expect(result.type).to.be.equal(null);
     expect(result.message).to.be.equal(productServiceMock.mockUpdateProduct);
   });
+  
+  it('Deleteando produto com sucesso', async function () {
+    sinon.stub(productModel, 'getById').resolves(productServiceMock.allProducts[2])
+    sinon.stub(productModel, 'deleteProduct').resolves();
+    const result = await productsService.deleteProduct(3);
+    expect(result.type).to.be.equal(null);
+
+  });
 
   
   
