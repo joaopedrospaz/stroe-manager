@@ -26,11 +26,12 @@ const createProduct = async (productName) => {
 
 const updateProduct = async (id, name) => {
   let findProduct = await getProductById(id);
-
+console.log('name', name);
   if (findProduct.type) return findProduct;
 
   const error = validateInput.validateName(name);
   if (error.type) return error;
+
   await productsModel.update(id, name);
   
   findProduct = await getProductById(id);

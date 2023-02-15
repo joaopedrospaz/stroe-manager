@@ -13,6 +13,28 @@ const allProducts = [
   }
 ]
 
+mockUpdateResult = [{
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  info: 'Rows matched: 1  Changed: 0  Warnings: 0',
+  serverStatus: 2,
+  warningStatus: 0,
+  changedRows: 1
+}];
+
+mockDeletProduct = [
+   {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    info: '',
+    serverStatus: 2,
+    warningStatus: 0
+  },
+]
 module.exports = {
   allProducts,
+  mockUpdateResult,
+  mockDeletProduct
 }

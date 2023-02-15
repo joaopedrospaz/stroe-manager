@@ -12,7 +12,16 @@ const allProducts = [
     "name": "Escudo do Capitão América"
   }
 ];
-
+const mockCreateProduct = {
+  "id": 5,
+  "name": "Anel do laterna verde"
+};
+const mockUpdateProduct = {
+  "id": 2,
+    "name": "Arco do Gavião Arqueiro"
+}
 module.exports = {
   allProducts,
+  mockCreateProduct,
+  mockUpdateProduct,
 }
