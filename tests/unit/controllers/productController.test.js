@@ -13,7 +13,6 @@ describe('Testa a unidade de controller de products', function () {
   it('Listando todos os produtos, deve retornar status 200', async function () {
     const req = {};
     const res = {};
-
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
 
