@@ -5,9 +5,6 @@ const erro = {
   'number.positive': 422,
 };
 
-const mapError = (type) => erro[type] || 500;
-
 module.exports = {
   erro,
-  mapError,
 };

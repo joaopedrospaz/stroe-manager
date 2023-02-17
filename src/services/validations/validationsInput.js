@@ -28,8 +28,10 @@ const validateId = (id) => {
    
   return { type: null, message: '' };
 };
+
 module.exports = { 
   validateName,
   findSaleErros,
   validateId,
+
 };

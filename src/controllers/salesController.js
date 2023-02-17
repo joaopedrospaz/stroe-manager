@@ -35,9 +35,21 @@ const removeSale = async (req, res) => {
 
   res.status(204).end();
 };
+
+const editSale = async (req, res) => {
+  const { id } = req.params;
+  const sales = req.body;
+
+  const { type, message } = await salesService.editSale(id, sales);
+
+  if (type) return res.status(statusErros.erro[type]).json({ message });
+
+  res.status(200).json(message);
+};
 module.exports = {
   postSale,
   getAll,
   getById,
   removeSale,
+  editSale,
 };
