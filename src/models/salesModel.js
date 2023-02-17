@@ -27,8 +27,32 @@ const getAll = async () => {
   return { resultSales, result };
 };
 
+const getById = async (id) => {
+  let [[resultSales]] = await connection
+    .execute('SELECT * FROM StoreManager.sales WHERE id = ?', [id]);
+  let [result] = await connection
+    .execute(
+      'SELECT * FROM StoreManager.sales_products WHERE sale_id = ? ORDER BY product_id', [id],
+  );
+  
+  result = camelize(result);
+  resultSales = camelize(resultSales);
+
+    return { resultSales, result };
+};
+
+const deleteSale = async (id) => {
+  const [resultSale] = await connection
+    .execute('DELETE FROM StoreManager.sales WHERE id = ?', [id]);
+  const [resultSaleProuct] = await connection
+    .execute('DELETE FROM StoreManager.sales_products WHERE sale_id = ?', [id]);
+  
+  return { resultSale, resultSaleProuct };
+};
 module.exports = {
   insertSale,
   insertProductSale,
   getAll,
+  getById,
+  deleteSale,
 };

@@ -14,7 +14,14 @@ const schemaSale = Joi.object().keys({
   'number.positive': '"{#key}" must be greater than or equal to 1',
 });
 
+const schemaId = Joi.number().positive().integer().required()
+  .messages({
+    'any.required': '"id" is required',
+    'number.positive': '"id" must be greater than or equal to 1',
+});
+
 module.exports = {
   schemaName,
   schemaSale,
+  schemaId,
 };

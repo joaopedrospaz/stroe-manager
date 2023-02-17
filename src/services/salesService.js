@@ -37,21 +37,32 @@ const getAllSales = async () => {
 };
 
 const getSaleById = async (idSale) => {
-  const { result, resultSales } = await salesModel.getAll();
+  const { result, resultSales } = await salesModel.getById(idSale);
+
+  if (result.length === 0) return { type: 'NOT_FOUND', message: 'Sale not found' };
+  const { date } = resultSales;
   
-  const filterSale = result.filter((e) => +e.saleId === +idSale && delete e.saleId);
-  
-  if (filterSale.length === 0) return { type: 'NOT_FOUND', message: 'Sale not found' };
-  
-  const { date } = resultSales.find((e) => e.id === +idSale);
-  
-  const addDate = filterSale.map((elem) => ({ ...elem, date }));
- 
+  const addDate = result.map(({ saleId, ...elem }) => ({ ...elem, date }));
+
   return { type: null, message: addDate };
+};
+
+const deleteSale = async (id) => {
+  const error = await validationsInput.validateId(id);
+
+  if (error.type) return error;
+
+  const foundSale = await getSaleById(id);
+  if (foundSale.type) return foundSale;
+
+  await salesModel.deleteSale(id);
+
+  return { type: null, message: '' };
 };
 
 module.exports = {
   createSale,
   getAllSales,
   getSaleById,
+  deleteSale,
 };

@@ -18,8 +18,9 @@ const mockCreateProduct = {
 };
 const mockUpdateProduct = {
   "id": 2,
-    "name": "Arco do Gavião Arqueiro"
-}
+  "name": "Arco do Gavião Arqueiro"
+};
+
 module.exports = {
   allProducts,
   mockCreateProduct,

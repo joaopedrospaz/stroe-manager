@@ -26,7 +26,7 @@ const createProduct = async (productName) => {
 
 const updateProduct = async (id, name) => {
   let findProduct = await getProductById(id);
-console.log('name', name);
+
   if (findProduct.type) return findProduct;
 
   const error = validateInput.validateName(name);
@@ -41,7 +41,7 @@ console.log('name', name);
 
 const deleteProduct = async (id) => {
   const validateId = await getProductById(id);
-  
+
   if (validateId.type) return validateId;
 
   await productsModel.deleteProduct(id);
