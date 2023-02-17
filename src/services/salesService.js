@@ -3,7 +3,7 @@ const productsService = require('./productsService');
 const validationsInput = require('./validations/validationsInput');
 
 const createSale = async (sales) => {
-  const error = await validationsInput.findSaleErros(sales);
+  const error = validationsInput.findSaleErros(sales);
   if (error.type) return error;
   
   const findProduct = await Promise.all(sales
@@ -11,8 +11,9 @@ const createSale = async (sales) => {
     const productNotFound = findProduct.find((elem) => elem.type !== null);
     if (productNotFound) return productNotFound;
     
-    const saleId = await salesModel.insertSale();
-   await Promise.all(sales.map(async (elem) => {
+  const saleId = await salesModel.insertSale();
+
+  await Promise.all(sales.map(async (elem) => {
       salesModel.insertProductSale(saleId, elem);
     }));
     

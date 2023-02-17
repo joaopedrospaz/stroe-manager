@@ -13,7 +13,7 @@ const validateSAle = (sale) => {
   return { type: null, message: '' };
 };
 
-const findSaleErros = async (sales) => {
+const findSaleErros = (sales) => {
   const errorMap = sales.map((elem) => validateSAle(elem)); 
   const findError = errorMap.find((elem) => elem.type !== null);
 

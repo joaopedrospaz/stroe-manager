@@ -13,6 +13,16 @@ const allProducts = [
   }
 ];
 
+const createdProduct = {
+  id: 7,
+  name: 'Elmo do Doutor Destino'
+};
+const updatedProduct = {
+  id: 6,
+  name: 'Lápis do John Wick'
+ }
 module.exports = {
   allProducts,
+  createdProduct,
+  updatedProduct,
 }
