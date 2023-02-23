@@ -60,6 +60,7 @@ const deleteSale = async (id) => {
   return { type: null, message: '' };
 };
 // Depois tenho que refatorar essa funçao, achar uma maneira melhor de validar se productId existe
+// posso fazer a requisição nessa camada e enviar para validateInput para a validação.
 const editSale = async (id, salesToEdit) => {
 let error = await validationsInput.validateId(id);
   if (error.type) return error;
