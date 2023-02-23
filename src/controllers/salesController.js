@@ -6,7 +6,7 @@ const postSale = async (req, res) => {
   const { type, message } = await salesService.createSale(itens);
 
   if (type) return res.status(statusErros.erro[type]).json({ message });
-  
+
   return res.status(201).json(message);
 };
 
@@ -21,7 +21,6 @@ const getById = async (req, res) => {
   const { type, message } = await salesService.getSaleById(id);
 
   if (type) return res.status(statusErros.erro[type]).json({ message });
-  
   res.status(200).json(message);
 }; 
 

@@ -15,10 +15,26 @@ describe('Testa a unidade de controller de sales', function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
 
-    sinon.stub(salesService, 'createSale').resolves({ type: null, messsage: salesControllerMock.createdSale });
+    sinon.stub(salesService, 'createSale').resolves({ type: null, message: salesControllerMock.createdSale });
     
     await salesController.postSale(req, res);
 
     expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(salesControllerMock.createdSale);
+  });
+
+  it('Listando todos os produtos, deve retornar status 200', async function () {
+    const req = {};
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon.stub(salesService, 'getAllSales').resolves({ type: null, message: salesControllerMock.allSales });
+
+    await salesController.getAll(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(salesControllerMock.allSales);
   });
 });

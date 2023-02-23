@@ -24,7 +24,7 @@ describe('Testa a unidade de controller de products', function () {
     expect(res.json).to.have.been.calledWith(productControllerMock.allProducts);
   });
 
-  it('Buscando produtos pelo id com id vláido, deve retornar status 201', async function () {
+  it('Buscando produtos pelo id com id vláido, deve retornar status 200', async function () {
     const req = { params: { id: 1 } };
     const res = {};
     res.status = sinon.stub().returns(res);
